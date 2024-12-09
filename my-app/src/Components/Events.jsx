@@ -37,12 +37,17 @@ function Events(){
     )
 
 
+    const registeredEvent = events.find((event) => event.id === id);
+    setRegisteredEvents((prev) => [...prev, registeredEvent]);
+  };
+
+
 
   return(
 
     <div>
     <header>
-        <h1>Event Management</h1>
+        <h1>Event Management system</h1>
       </header>
 
 
@@ -94,5 +99,5 @@ function Events(){
    
   )
 }
-}
+
 export default Events;
