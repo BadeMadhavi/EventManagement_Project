@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import './index.css'
+
 function Events(){
 
   const [events, setEvents] = useState([
@@ -41,6 +44,16 @@ function Events(){
     setRegisteredEvents((prev) => [...prev, registeredEvent]);
   };
 
+  const filteredEvents = events.filter((event) => {
+    return (
+      (!filters.category || event.category === filters.category) &&
+      (!filters.location || event.location === filters.location) &&
+      (!filters.search ||
+        event.name.toLowerCase().includes(filters.search.toLowerCase()) ||
+        event.location.toLowerCase().includes(filters.search.toLowerCase()) ||
+        event.date.includes(filters.search))
+    );
+  });
 
 
   return(
