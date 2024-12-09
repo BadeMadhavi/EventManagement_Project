@@ -21,35 +21,15 @@ function Events(){
       remainingSpots: 10,
       attendees: [],
     },
-  ])
-
-
-  const [registeredEvents, setRegisteredEvents] = useState([])
-  const [filters, setFilters] = useState({ category: '', location: '', search: '' })
-
-  const handleRegister = (id) => {
-    setEvents((prev) =>
-      prev.map((event) =>
-        event.id === id
-          ? { ...event, remainingSpots: event.remainingSpots - 1, attendees: [...event.attendees, 'User'] }
-          : event
-      )
-    )
-
-
-    const registeredEvent = events.find((event) => event.id === id);
-    setRegisteredEvents((prev) => [...prev, registeredEvent]);
-  };
-
-
+  ]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+  const [filters, setFilters] = useState({ category: '', location: '', search: '' });
 
   return(
-
     <div>
     <header>
-        <h1>Event Management system</h1>
+        <h1>Event Management System</h1>
       </header>
-
 
 
       <div className="container">
@@ -64,40 +44,25 @@ function Events(){
 <option value="New York">New York</option>
 <option value="San Francisco">San Francisco</option>
 </select>
-   <input type="text" placeholder="Search by name, location, or date" onChange={(e) => setFilters({ ...filters, search: e.target.value })}/>
+          <input
+            type="text"
+            placeholder="Search by name, location, or date"
+            onChange={(e) => setFilters({ ...filters, search: e.target.value })} />
+        </div>
+    </div>
+      <h2>Your Registered Events</h2>
+       {registeredEvents.map((event) => (
+<div key={event.id} className="card">
+<h3>{event.name}</h3>
+<p>
+<strong>Date:</strong> {event.date}
+</p>
 </div>
- </div>
-
-
- <h2>Upcoming Events</h2>
-        {filteredEvents.map((event) => (
-          <div key={event.id} className="card">
-            <h3>{event.name}</h3>
-            <p><strong>Date:</strong> {event.date}</p>
-            <p><strong>Location:</strong> {event.location}</p>
-            <p> <strong>Category:</strong> {event.category}</p>
-            <p>{event.description}</p>
-<button onClick={() => handleRegister(event.id)} disabled={event.remainingSpots <= 0} >
- {event.remainingSpots > 0 ? `Register (${event.remainingSpots} spots left)` : 'Fully Booked'}
-</button>
-          </div>
         ))}
 
-
-
-
-    <h2>Your Registered Events</h2>
-
-     {registeredEvents.map((event) => (
-    <div key={event.id} className="card">
-    <h3>{event.name}</h3>
-    <p><strong>Date:</strong> {event.date}</p>
-   </div>
-    ))}
     </div>
 
-   
+    
   )
 }
-
 export default Events;
