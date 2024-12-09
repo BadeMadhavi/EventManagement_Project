@@ -1,5 +1,29 @@
 function Events(){
 
+  const [events, setEvents] = useState([
+    {
+      id: 1,
+      name: 'React Workshop',
+      date: '2023-12-20',
+      location: 'New York',
+      category: 'Workshop',
+      description: 'Learn React',
+      remainingSpots: 5,
+      attendees: [],
+    },
+    {
+      id: 2,
+      name: 'Tech Conference',
+      date: '2023-12-22',
+      location: 'San Francisco',
+      category: 'Conference',
+      description: 'Explore tech trends',
+      remainingSpots: 10,
+      attendees: [],
+    },
+  ]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+  const [filters, setFilters] = useState({ category: '', location: '', search: '' });
 
   return(
     <div>
@@ -28,7 +52,19 @@ function Events(){
 </div>
 
     </div>
+    <h2>Your Registered Events</h2>
+        {registeredEvents.map((event) => (
+<div key={event.id} className="card">
+<h3>{event.name}</h3>
+<p>
+<strong>Date:</strong> {event.date}
+</p>
+</div>
+        ))}
+
     </div>
+
+    
   )
 }
 export default Events;
