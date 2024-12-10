@@ -126,3 +126,17 @@ transform: scale(1.05);
     }
   }
    
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+   
+    .card {
+      padding: 15px;
+    }
+   
+    .filter-container select,
+    .filter-container input {
+      font-size: 0.9rem;
+    }
+  }
