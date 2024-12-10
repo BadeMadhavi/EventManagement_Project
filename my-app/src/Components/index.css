@@ -66,4 +66,33 @@ body {
     background: #f9f9f9;
     border-radius: 4px;
   }
- 
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+   
+    .filter-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+   
+    .card {
+      width: 100%;
+    }
+  }
+   
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+   
+    .card {
+      padding: 15px;
+    }
+   
+    .filter-container select,
+    .filter-container input {
+      font-size: 0.9rem;
+    }
+  }
+   
